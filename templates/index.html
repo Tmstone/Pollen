@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <meta name="Better Spring" content="Pollen forecast personlized for you">
+          <title>Better Spring</title>
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+          <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+          <script src="{{ url_for('static', filename='script.js') }}"></script>
+     </head>
+     <body>
+          <div class="container">
+               <div class="header">
+                    <div class="row">
+                         <div class="col-8">
+                            <h3 class ="h3 d-inline-block">Welcome to the Pollen App!</h3>
+                            {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                     {% for message in messages %}
+                                          <p style="color: red">{{message}}</p>
+                                     {% endfor %}
+                                 {% endif %}
+                           {% endwith %}
+                         </div>
+                         <div class="col-4">
+                              <button type="button" id="rBtn" class="btn btn-sm btn-primary">Register</button>
+                              <button type="button" id="lBtn" class="btn btn-sm btn-success">Login</button>
+                              <!-- <a class="btn btn-sm btn-primary" href="#" >Register</a> -->
+                              <!-- <a class="d-inline-block btn btn-sm btn-success" href="#">Login</a> -->
+                         </div>
+                    </div>
+                </div>
+               <div class="row">
+                    <div class="col-8 rForm">
+                         <h4>Register</h4>
+                         <form class="" action="/new_user" method="post">
+                              <div class="">
+
+                              </div>
+                              <label for="first_name">First Name</label>
+                              <input type="text" name="first_name" value="">
+
+                              <label for="last_name">Last Name</label>
+                              <input type="text" name="last_name" value="">
+
+                              <label for="email">Email</label>
+                              <input type="email" name="email" value="">
+
+                              <label for="password">Password</label>
+                              <input type="password" name="password" value="">
+
+                              <input type="submit" class="btn btn-primary" value="Register">
+                         </form>
+                    </div>
+                    <div class="col-4 lForm">
+                         <h4>Login</h4>
+                         <form class="" action="/login" method="post">
+
+                              <label for="email">Email</label>
+                              <input type="email" name="email" value="">
+
+                              <label for="password">Password</label>
+                              <input type="password" name="password" value="">
+
+                              <input type="submit" class="btn btn-success" value="Login">
+                         </form>
+                    </div>
+               </div>
+               <div class="section">
+                    <h1>Get your Pollen Forcast</h1>
+                    <form class="" action="#" method="post">
+
+                         <label for="search">Search</label>
+                         <input type="text" name="search" value="Enter a City or Zip Code">
+
+                         <input type="submit" class="btn btn-success" value="Search">
+                    </form>
+               </div>
+          </div>
+     </body>
+</html>
