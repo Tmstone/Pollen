@@ -61,7 +61,7 @@ class User(db.Model):
     def login_assist(cls, form):
         user = User.query.filter_by(email=form['email']).first()
         if user:
-            if bcrypt.check.password_hash(pw_hash, form['password']):
+            if bcrypt.check_password_hash(user.pw_hash, form['password']):
                 return (True, user.id)
         return (False, 'email or password incorrect')
 
@@ -90,6 +90,9 @@ def login():
 
 @app.route('/success')
 def members():
+    if 'user_id' not in session:
+        return redirect('/')
+
     return render_template('member.html')
 
 @app.route('/logout')
