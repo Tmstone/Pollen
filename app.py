@@ -27,6 +27,7 @@ class User(db.Model):
     last_name = db.Column(db.String(45), nullable = False)
     email = db.Column(db.String(45), nullable = False)
     pw_hash = db.Column(db.String(255), nullable = False)
+    birth_day = db.Column(db.String(25), nullable = False)
     created_at = db.Column(db.DateTime, server_default=func.now())
     updated_at = db.Column(db.DateTime, server_default=func.now(), onupdate=func.now())
 
